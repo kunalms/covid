@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.numerator.covid.service.PatientService;
 
 @RestController
-@RequestMapping("/patientdata")
+@RequestMapping("/api/patient")
 public class PatientController {
     private static final Logger LOG = LoggerFactory.getLogger(PatientController.class);
 

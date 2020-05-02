@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.numerator.covid.service.FileProcessorService;
 
 @RestController
-@RequestMapping("/file")
+@RequestMapping("/api/file")
 public class FileController {
 
     private static final Logger LOG = LoggerFactory.getLogger(FileController.class);
