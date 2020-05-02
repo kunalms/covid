@@ -1,0 +1,47 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.6.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.numerator'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+	all {
+		// not using the in build logger instead using log4J2.
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Springboot stuff
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.2.6.RELEASE'
+	compile('org.springframework.boot:spring-boot-starter-web')
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	compile('org.springframework.boot:spring-boot-starter-log4j2')
+
+	implementation('org.mariadb.jdbc:mariadb-java-client:2.1.2')
+	runtimeOnly('mysql:mysql-connector-java')
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+
+	// Custom imports
+	compile group: 'commons-io', name: 'commons-io', version: '2.6'
+	compile group: 'com.opencsv', name: 'opencsv', version: '5.1'
+}
+
+test {
+	useJUnitPlatform()
+}
