@@ -18,7 +18,7 @@ public class PatientCustomRepositoryImpl implements PatientCustomRepository {
     private EntityManager entityManager;
 
     @Override
-    public List<Object[]> getCountsByDate(String state, Integer days) {
+    public List<Object[]> getCountsByDate(String state) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
 
         CriteriaQuery<Object[]> query = cb.createQuery(Object[].class);

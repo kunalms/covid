@@ -4,7 +4,7 @@ import java.util.List;
 
 
 public interface PatientCustomRepository {
-    List<Object[]> getCountsByDate(String state, Integer days);
+    List<Object[]> getCountsByDate(String state);
 
     List<Object[]> getCountsByRange(String state);
 }

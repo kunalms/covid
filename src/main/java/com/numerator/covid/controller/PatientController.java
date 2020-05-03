@@ -26,12 +26,16 @@ public class PatientController {
 
 
     @GetMapping("/getcountsbydate")
-    public List<Object[]> getCountsByDate(@RequestParam(defaultValue = "") String state, @RequestParam(defaultValue = "0") Integer days) {
-        return this.patientService.getCountsByDate(state, days);
+    public List<Object[]> getCountsByDate(@RequestParam(defaultValue = "") String state) {
+        LOG.info("request recieved to get getCountsByDate");
+        LOG.info("State: {}", state);
+        return this.patientService.getCountsByDate(state);
     }
 
     @GetMapping("/getcountsbyrange")
-    public List<Object[]> getCountsByDate(@RequestParam(defaultValue = "") String state) {
+    public List<Object[]> getCountsByRange(@RequestParam(defaultValue = "") String state) {
+        LOG.info("request recieved to get getCountsByDate");
+        LOG.info("State: {}", state);
         return this.patientService.getCountsByRange(state);
     }
 }

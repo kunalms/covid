@@ -2,6 +2,8 @@ package com.numerator.covid.controller;
 
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,8 @@ import com.numerator.covid.service.StateService;
 @RequestMapping("/api/state")
 public class StateController {
 
+    private static final Logger LOG = LoggerFactory.getLogger(StateController.class);
+
     private final StateService stateService;
 
     @Autowired
@@ -23,6 +27,7 @@ public class StateController {
 
     @GetMapping("/all")
     public Set<Object> getStates() {
+        LOG.info("request recieved to get all states");
         return this.stateService.getAllStates();
     }
 }

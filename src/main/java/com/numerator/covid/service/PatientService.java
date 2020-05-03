@@ -17,8 +17,8 @@ public class PatientService {
         this.patientRepository = patientRepository;
     }
 
-    public List<Object[]> getCountsByDate(String state, Integer days) {
-        return this.patientRepository.getCountsByDate(state, days);
+    public List<Object[]> getCountsByDate(String state) {
+        return this.patientRepository.getCountsByDate(state);
     }
 
     public List<Object[]> getCountsByRange(String state) {
