@@ -1,0 +1,17 @@
+<div class="content-container" fxLayout="column">
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+    <mat-form-field fxFlex="20%">
+      <mat-label>State</mat-label>
+      <mat-select (selectionChange)="generateData()" [(value)]="selected">
+        <mat-option *ngFor="let state of states" [value]="state.code">
+          {{state.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-slide-toggle (toggleChange)="toggleDataVisibility()" [checked]="showUnClassifiedData" color="primary">
+      <mat-label>Show Unclassified data</mat-label>
+    </mat-slide-toggle>
+  </div>
+</div>
+<app-bar-chart *ngIf="chartData" [data]="chartData" class="content-container"></app-bar-chart>
