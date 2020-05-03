@@ -50,14 +50,19 @@ public class PatientCustomRepositoryImpl implements PatientCustomRepository {
 
         List<Predicate> predicates = new ArrayList<>();
 
+        if (!state.equals("")) {
+            predicates.add(cb.equal(patientRoot.get("stateCode"), state));
+        }
 
-        query.multiselect(cb.count(patientRoot), cb.selectCase()
+
+        query.multiselect(cb.selectCase()
                 .when(cb.between(patientRoot.get("age"), 1, 20), "0-20")
                 .when(cb.between(patientRoot.get("age"), 21, 40), "21-40")
                 .when(cb.between(patientRoot.get("age"), 41, 60), "41-60")
                 .when(cb.between(patientRoot.get("age"), 61, 80), "61-80")
                 .when(cb.between(patientRoot.get("age"), 81, 100), "81-100")
-                .otherwise("unclassified"))
+                .otherwise("unclassified"), cb.count(patientRoot))
+                .where((cb.and(predicates.toArray(new Predicate[0]))))
                 .groupBy(cb.selectCase()
                         .when(cb.between(patientRoot.get("age"), 1, 20), "0-20")
                         .when(cb.between(patientRoot.get("age"), 21, 40), "21-40")
