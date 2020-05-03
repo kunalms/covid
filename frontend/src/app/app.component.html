@@ -1,2 +1,25 @@
-It works!
-<router-outlet></router-outlet>
+<div [class.dark-theme]="darkTheme" fxFlexFill fxLayout="column">
+  <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+    <div>Covid</div>
+    <button (click)="darkTheme = !darkTheme" aria-label="Change theme" mat-icon-button>
+      <mat-icon *ngIf="!darkTheme" color="accent">nights_stay</mat-icon>
+      <mat-icon *ngIf="darkTheme" style="color: #ffde37">brightness_1</mat-icon>
+    </button>
+  </mat-toolbar>
+  <nav fxFlex="49px" mat-tab-nav-bar>
+    <a [active]="isTotalTabActive"
+       fxFlex="50%"
+       mat-tab-link
+       routerLink="total">
+      Cumilative Cases by Day
+    </a>
+    <a [active]="isRangeTabActive"
+       fxFlex="50%"
+       mat-tab-link
+       routerLink="range">
+      Classification of cases by Age
+    </a>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>
